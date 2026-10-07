@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Archivo_Black, JetBrains_Mono, Lora } from "next/font/google";
 import "./globals.css";
 
@@ -23,16 +23,64 @@ const lora = Lora({
   subsets: ["latin"],
 });
 
+const SITE_URL = "https://ctf.void-society.in";
+const TITLE = "VOID CTF 2026 | AD/ICS/SCADA Attack-Defense CTF by KIET";
+const DESCRIPTION =
+  "VOID CTF, 2026 by KIET, Void Society: A 24-hour online qualifier (24-25 Oct) and an offline Attack-Defense final (29-30 Nov). Register your team now.";
+
 export const metadata: Metadata = {
-  title: "VOID CTF",
-  description:
-    "A 24-hour offensive security gauntlet carved into the dunes. 42 vaults, one wasteland, no hints.",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: TITLE,
+    template: "%s | VOID CTF",
+  },
+  description: DESCRIPTION,
+  applicationName: "VOID CTF",
+  keywords: [
+    "VOID CTF",
+    "CTF 2026",
+    "Capture The Flag, India",
+    "Attack-Defense CTF",
+    "AD, ICS & SCADA CTF",
+    "KIET, CTF",
+    "Void Society",
+  ],
+  authors: [{ name: "Void Society, KIET" }],
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
+  alternates: {
+    // "./" resolves per page, so / and /sponsor each get their own canonical
+    canonical: "./",
+  },
+  openGraph: {
+    type: "website",
+    siteName: "VOID CTF",
+    title: TITLE,
+    description: DESCRIPTION,
+    locale: "en_IN",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: TITLE,
+    description: DESCRIPTION,
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#0b0604",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
-      lang="en"
+      lang="en-IN"
       // data-theme / data-intro are set pre-paint by the inline script below
       suppressHydrationWarning
       className={`${archivoBlack.variable} ${jetbrainsMono.variable} ${lora.variable} h-full antialiased`}

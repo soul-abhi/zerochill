@@ -173,9 +173,9 @@ export function Ingress({ opened }: { opened: boolean }) {
               <span className="ingress__wm-letter ingress__wm-item">D</span>
             </div>
 
-            <h2 id="ingress-headline" className="ingress__headline">
+            <p id="ingress-headline" className="ingress__headline">
               {content.ingress.headline}
-            </h2>
+            </p>
           </div>
 
           <div className="ingress__hero-copy">
